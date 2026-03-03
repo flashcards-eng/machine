@@ -1,0 +1,91 @@
+name: Generate songs.json
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - "songs/**"
+      - ".github/workflows/generate-songs-json.yml"
+      - "index.html"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-songs-json:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate songs.json from songs/*.mp3
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p songs
+
+          python3 <<'PY'
+          import os, json, re
+          from pathlib import Path
+
+          songs_dir = Path("songs")
+          files = []
+
+          if songs_dir.exists():
+              for p in songs_dir.rglob("*"):
+                  if p.is_file() and p.suffix.lower() == ".mp3":
+                      rel = p.as_posix()  # "songs/file.mp3" or nested paths
+                      name = p.name
+
+                      # Pretty title from filename
+                      title = re.sub(r"\.[^.]+$", "", name)      # remove extension
+                      title = re.sub(r"[_-]+", " ", title)       # separators -> spaces
+                      title = re.sub(r"^\s*\d+\s*[\.\-]?\s*", "", title)  # leading track num
+                      title = re.sub(r"\s+", " ", title).strip()
+
+                      # Title case (simple)
+                      title = " ".join(word[:1].upper() + word[1:] for word in title.split(" "))
+
+                      files.append({
+                          "title": title if title else name,
+                          "file": rel
+                      })
+
+          # Sort naturally-ish by file path
+          def sort_key(item):
+              s = item["file"].lower()
+              return [int(t) if t.isdigit() else t for t in re.split(r"(\d+)", s)]
+
+          files.sort(key=sort_key)
+
+          output = {
+              "tracks": files
+          }
+
+          with open("songs.json", "w", encoding="utf-8") as f:
+              json.dump(output, f, ensure_ascii=False, indent=2)
+              f.write("\n")
+
+          print(f"Generated songs.json with {len(files)} tracks")
+          PY
+
+      - name: Commit songs.json if changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- songs.json; then
+            echo "No changes to songs.json"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add songs.json
+          git commit -m "chore: update songs.json [skip ci]"
+          git push
