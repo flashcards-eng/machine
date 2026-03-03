@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Jukebox</title>
+  <style>
+    :root {
+      --bg: #0f1220;
+      --panel: #171a2b;
+      --panel-2: #1f2340;
+      --text: #e9ecff;
+      --muted: #aab0d6;
+      --accent: #7c9cff;
+      --accent-2: #9a7cff;
+      --danger: #ff6b6b;
+      --border: #2c3152;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: linear-gradient(180deg, #0b0e1a, #12162b);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 16px;
+    }
+
+    .app {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      gap: 16px;
+    }
+
+    .card {
+      background: rgba(23, 26, 43, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 1.4rem;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .now-playing {
+      display: grid;
+      gap: 10px;
+    }
+
+    .song-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin: 0;
+      word-break: break-word;
+    }
+
+    .song-meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .progress-wrap {
+      display: grid;
+      gap: 6px;
+    }
+
+    .time-row {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .controls {
+      display: grid;
+      gap: 10px;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    button {
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.05s ease, opacity 0.2s ease, border-color 0.2s ease;
+    }
+
+    button:hover { border-color: #46508c; }
+    button:active { transform: translateY(1px); }
+    button.active {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(124, 156, 255, 0.25) inset;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border-color: transparent;
+      color: white;
+      min-width: 88px;
+    }
+
+    .playlist {
+      display: grid;
+      gap: 8px;
+      max-height: 420px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .track {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 10px;
+      align-items: center;
+      background: #141833;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .track:hover { border-color: #46508c; }
+    .track.active {
+      border-color: var(--accent);
+      background: #161d3f;
+    }
+
+    .track-index {
+      color: var(--muted);
+      width: 28px;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .track-title {
+      margin: 0;
+      font-weight: 600;
+      font-size: 0.95rem;
+      word-break: break-word;
+    }
+
+    .track-file {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 0.8rem;
+      word-break: break-all;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 8px;
+      white-space: nowrap;
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .warning {
+      color: #ffd08a;
+    }
+
+    @media (max-width: 640px) {
+      button { flex: 1 1 auto; }
+      .btn-primary { min-width: unset; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="card">
+      <h1>🎵 My Jukebox</h1>
+      <p class="subtitle">GitHub Pages MP3 player with playlist, shuffle, and repeat</p>
+    </div>
+
+    <div class="card now-playing">
+      <p class="song-meta">Now playing</p>
+      <p id="nowTitle" class="song-title">Nothing loaded</p>
+      <p id="nowMeta" class="song-meta">Select a song or press Play</p>
+
+      <div class="progress-wrap">
+        <input id="seekBar" type="range" min="0" max="100" value="0" step="0.1" />
+        <div class="time-row">
+          <span id="currentTime">0:00</span>
+          <span id="duration">0:00</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="btn-row">
+          <button id="prevBtn" title="Previous track">⏮ Prev</button>
+          <button id="playPauseBtn" class="btn-primary" title="Play/Pause">▶ Play</button>
+          <button id="nextBtn" title="Next track">Next ⏭</button>
+        </div>
+
+        <div class="btn-row">
+          <button id="shuffleBtn" title="Shuffle on/off">🔀 Shuffle: Off</button>
+          <button id="repeatBtn" title="Repeat mode">🔁 Repeat: All</button>
+        </div>
+
+        <div class="btn-row">
+          <label style="display:flex;align-items:center;gap:8px;flex:1;min-width:180px;">
+            <span style="color:var(--muted);font-size:0.9rem;">Volume</span>
+            <input id="volumeBar" type="range" min="0" max="1" step="0.01" value="1" style="flex:1;" />
+          </label>
+        </div>
+      </div>
+
+      <p class="footer-note warning" id="autoplayHint">
+        ⚠️ Browsers may block autoplay until someone taps Play once.
+      </p>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <h2 style="margin:0;font-size:1.05rem;">Playlist</h2>
+        <span id="playlistCount" class="badge">0 songs</span>
+      </div>
+      <div id="playlistEl" class="playlist" style="margin-top:12px;"></div>
+      <p class="footer-note" style="margin-top:12px;">
+        To add songs later: upload MP3 files into <code>songs/</code> and add them to the <code>TRACKS</code> array in this file.
+      </p>
+    </div>
+  </div>
+
+  <audio id="audio" preload="metadata"></audio>
+
+  <script>
+    // ============================
+    // 1) ADD YOUR SONGS HERE
+    // ============================
+    // Path is relative to index.html. Put your MP3s in /songs/
+    const TRACKS = [
+      { title: "Song 1", file: "songs/song1.mp3" },
+      { title: "Song 2", file: "songs/song2.mp3" },
+      { title: "Song 3", file: "songs/song3.mp3" },
+
+      // Add more like:
+      // { title: "My New Song", file: "songs/my-new-song.mp3" },
+    ];
+
+    // Repeat modes: "all" | "one" | "off"
+    let repeatMode = "all";
+    let shuffleOn = false;
+    let currentIndex = 0;
+    let hasUserInteracted = false;
+
+    const audio = document.getElementById("audio");
+    const nowTitle = document.getElementById("nowTitle");
+    const nowMeta = document.getElementById("nowMeta");
+    const seekBar = document.getElementById("seekBar");
+    const currentTimeEl = document.getElementById("currentTime");
+    const durationEl = document.getElementById("duration");
+    const playPauseBtn = document.getElementById("playPauseBtn");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const shuffleBtn = document.getElementById("shuffleBtn");
+    const repeatBtn = document.getElementById("repeatBtn");
+    const volumeBar = document.getElementById("volumeBar");
+    const playlistEl = document.getElementById("playlistEl");
+    const playlistCount = document.getElementById("playlistCount");
+    const autoplayHint = document.getElementById("autoplayHint");
+
+    function formatTime(seconds) {
+      if (!isFinite(seconds) || seconds < 0) return "0:00";
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${String(secs).padStart(2, "0")}`;
+    }
+
+    function updateRepeatButton() {
+      const labels = {
+        all: "🔁 Repeat: All",
+        one: "🔂 Repeat: One",
+        off: "➡️ Repeat: Off"
+      };
+      repeatBtn.textContent = labels[repeatMode];
+      repeatBtn.classList.toggle("active", repeatMode !== "off");
+    }
+
+    function updateShuffleButton() {
+      shuffleBtn.textContent = `🔀 Shuffle: ${shuffleOn ? "On" : "Off"}`;
+      shuffleBtn.classList.toggle("active", shuffleOn);
+    }
+
+    function renderPlaylist() {
+      playlistEl.innerHTML = "";
+
+      TRACKS.forEach((track, index) => {
+        const row = document.createElement("div");
+        row.className = "track" + (index === currentIndex ? " active" : "");
+        row.dataset.index = index;
+
+        const indexEl = document.createElement("div");
+        indexEl.className = "track-index";
+        indexEl.textContent = String(index + 1);
+
+        const textWrap = document.createElement("div");
+        const titleEl = document.createElement("p");
+        titleEl.className = "track-title";
+        titleEl.textContent = track.title || `Track ${index + 1}`;
+        const fileEl = document.createElement("p");
+        fileEl.className = "track-file";
+        fileEl.textContent = track.file;
+        textWrap.appendChild(titleEl);
+        textWrap.appendChild(fileEl);
+
+        const badge = document.createElement("div");
+        badge.className = "badge";
+        badge.textContent = index === currentIndex ? "Current" : "Play";
+
+        row.appendChild(indexEl);
+        row.appendChild(textWrap);
+        row.appendChild(badge);
+
+        row.addEventListener("click", async () => {
+          currentIndex = index;
+          loadTrack(currentIndex);
+          renderPlaylist();
+          await playAudio();
+        });
+
+        playlistEl.appendChild(row);
+      });
+
+      playlistCount.textContent = `${TRACKS.length} song${TRACKS.length === 1 ? "" : "s"}`;
+    }
+
+    function loadTrack(index) {
+      if (!TRACKS.length) {
+        nowTitle.textContent = "No songs configured";
+        nowMeta.textContent = "Add MP3s to /songs and edit the TRACKS array";
+        audio.removeAttribute("src");
+        audio.load();
+        return;
+      }
+
+      const track = TRACKS[index];
+      audio.src = track.file;
+      audio.load();
+
+      nowTitle.textContent = track.title || `Track ${index + 1}`;
+      nowMeta.textContent = track.file;
+      seekBar.value = 0;
+      currentTimeEl.textContent = "0:00";
+      durationEl.textContent = "0:00";
+      highlightCurrentTrack();
+    }
+
+    function highlightCurrentTrack() {
+      const rows = [...playlistEl.querySelectorAll(".track")];
+      rows.forEach((row, idx) => {
+        const isCurrent = idx === currentIndex;
+        row.classList.toggle("active", isCurrent);
+        const badge = row.querySelector(".badge");
+        if (badge) badge.textContent = isCurrent ? "Current" : "Play";
+      });
+    }
+
+    async function playAudio() {
+      if (!TRACKS.length) return;
+      try {
+        await audio.play();
+        playPauseBtn.textContent = "⏸ Pause";
+        hasUserInteracted = true;
+        autoplayHint.style.display = "none";
+      } catch (err) {
+        console.warn("Playback blocked until user interaction:", err);
+      }
+    }
+
+    function pauseAudio() {
+      audio.pause();
+      playPauseBtn.textContent = "▶ Play";
+    }
+
+    function togglePlayPause() {
+      if (!TRACKS.length) return;
+      if (!audio.src) loadTrack(currentIndex);
+      if (audio.paused) {
+        playAudio();
+      } else {
+        pauseAudio();
+      }
+    }
+
+    function getNextIndex() {
+      if (!TRACKS.length) return 0;
+
+      if (shuffleOn && TRACKS.length > 1) {
+        let next = currentIndex;
+        while (next === currentIndex) {
+          next = Math.floor(Math.random() * TRACKS.length);
+        }
+        return next;
+      }
+
+      if (currentIndex < TRACKS.length - 1) return currentIndex + 1;
+
+      // end of list
+      if (repeatMode === "all") return 0;
+      return currentIndex; // for "off", stays at end (handled on ended)
+    }
+
+    function getPrevIndex() {
+      if (!TRACKS.length) return 0;
+
+      if (shuffleOn && TRACKS.length > 1) {
+        let prev = currentIndex;
+        while (prev === currentIndex) {
+          prev = Math.floor(Math.random() * TRACKS.length);
+        }
+        return prev;
+      }
+
+      if (currentIndex > 0) return currentIndex - 1;
+      return repeatMode === "all" ? TRACKS.length - 1 : 0;
+    }
+
+    async function nextTrack(forcePlay = true) {
+      if (!TRACKS.length) return;
+
+      const atEnd = currentIndex === TRACKS.length - 1;
+      if (!shuffleOn && atEnd && repeatMode === "off") {
+        // Stay on last track and stop
+        pauseAudio();
+        audio.currentTime = 0;
+        return;
+      }
+
+      currentIndex = getNextIndex();
+      loadTrack(currentIndex);
+      renderPlaylist();
+      if (forcePlay) await playAudio();
+    }
+
+    async function prevTrack() {
+      if (!TRACKS.length) return;
+
+      // common UX: if >3s into track, restart current track
+      if (audio.currentTime > 3) {
+        audio.currentTime = 0;
+        return;
+      }
+
+      currentIndex = getPrevIndex();
+      loadTrack(currentIndex);
+      renderPlaylist();
+      await playAudio();
+    }
+
+    playPauseBtn.addEventListener("click", togglePlayPause);
+    nextBtn.addEventListener("click", () => nextTrack(true));
+    prevBtn.addEventListener("click", prevTrack);
+
+    shuffleBtn.addEventListener("click", () => {
+      shuffleOn = !shuffleOn;
+      updateShuffleButton();
+    });
+
+    repeatBtn.addEventListener("click", () => {
+      if (repeatMode === "all") repeatMode = "one";
+      else if (repeatMode === "one") repeatMode = "off";
+      else repeatMode = "all";
+      updateRepeatButton();
+    });
+
+    volumeBar.addEventListener("input", () => {
+      audio.volume = Number(volumeBar.value);
+    });
+
+    seekBar.addEventListener("input", () => {
+      if (!isFinite(audio.duration) || audio.duration <= 0) return;
+      const pct = Number(seekBar.value) / 100;
+      audio.currentTime = pct * audio.duration;
+    });
+
+    audio.addEventListener("loadedmetadata", () => {
+      durationEl.textContent = formatTime(audio.duration);
+    });
+
+    audio.addEventListener("timeupdate", () => {
+      if (!isFinite(audio.duration) || audio.duration <= 0) return;
+      const pct = (audio.currentTime / audio.duration) * 100;
+      seekBar.value = pct;
+      currentTimeEl.textContent = formatTime(audio.currentTime);
+      durationEl.textContent = formatTime(audio.duration);
+    });
+
+    audio.addEventListener("play", () => {
+      playPauseBtn.textContent = "⏸ Pause";
+    });
+
+    audio.addEventListener("pause", () => {
+      playPauseBtn.textContent = "▶ Play";
+    });
+
+    audio.addEventListener("ended", async () => {
+      if (repeatMode === "one") {
+        audio.currentTime = 0;
+        await playAudio();
+        return;
+      }
+
+      const atEnd = currentIndex === TRACKS.length - 1;
+      if (!shuffleOn && atEnd && repeatMode === "off") {
+        pauseAudio();
+        return;
+      }
+
+      await nextTrack(true);
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener("keydown", (e) => {
+      // avoid interfering while typing in form fields (none here, but future-proof)
+      const tag = document.activeElement?.tagName?.toLowerCase();
+      if (tag === "input" || tag === "textarea") return;
+
+      if (e.code === "Space") {
+        e.preventDefault();
+        togglePlayPause();
+      } else if (e.code === "ArrowRight") {
+        e.preventDefault();
+        nextTrack(true);
+      } else if (e.code === "ArrowLeft") {
+        e.preventDefault();
+        prevTrack();
+      }
+    });
+
+    // Initialize
+    updateShuffleButton();
+    updateRepeatButton();
+    audio.volume = Number(volumeBar.value);
+
+    if (TRACKS.length > 0) {
+      loadTrack(currentIndex);
+    } else {
+      nowTitle.textContent = "No songs configured";
+      nowMeta.textContent = "Edit TRACKS array in index.html";
+    }
+    renderPlaylist();
+  </script>
+</body>
+</html>
