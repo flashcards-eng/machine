@@ -21,6 +21,10 @@
       "file": "songs/Doraemon.mp3"
     },
     {
+      "title": "Joe Hisaishi Summer",
+      "file": "songs/Joe Hisaishi - Summer.mp3"
+    },
+    {
       "title": "My Name Is Helena",
       "file": "songs/My Name Is Helena.mp3"
     },
@@ -31,6 +35,10 @@
     {
       "title": "Ponyo",
       "file": "songs/Ponyo.mp3"
+    },
+    {
+      "title": "Turkish March Mozart",
+      "file": "songs/Turkish March Mozart.mp3"
     }
   ]
 }
