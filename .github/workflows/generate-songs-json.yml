@@ -78,14 +78,18 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if git diff --quiet -- songs.json; then
+      
+          # Stage songs.json first (works for new file + existing file changes)
+          git add songs.json
+      
+          # If nothing staged, exit
+          if git diff --cached --quiet; then
             echo "No changes to songs.json"
             exit 0
           fi
-
+      
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add songs.json
+      
           git commit -m "chore: update songs.json [skip ci]"
           git push
