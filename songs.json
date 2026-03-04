@@ -7,6 +7,18 @@
     {
       "title": "Come And Get Your Love",
       "file": "songs/Come and Get Your Love.mp3"
+    },
+    {
+      "title": "Doraemon",
+      "file": "songs/Doraemon.mp3"
+    },
+    {
+      "title": "My Neighbor Totoro",
+      "file": "songs/My Neighbor Totoro.mp3"
+    },
+    {
+      "title": "Ponyo",
+      "file": "songs/Ponyo.mp3"
     }
   ]
 }
