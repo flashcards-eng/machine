@@ -1,6 +1,10 @@
 {
   "tracks": [
     {
+      "title": "Canon In D",
+      "file": "songs/Canon in D.mp3"
+    },
+    {
       "title": "Cat Returns",
       "file": "songs/Cat Returns.mp3"
     },
