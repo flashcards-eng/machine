@@ -5,6 +5,10 @@
       "file": "songs/Canon in D.mp3"
     },
     {
+      "title": "Cat Returns Mandarin",
+      "file": "songs/Cat Returns Mandarin.mp3"
+    },
+    {
       "title": "Cat Returns",
       "file": "songs/Cat Returns.mp3"
     },
@@ -37,12 +41,24 @@
       "file": "songs/Ponyo.mp3"
     },
     {
+      "title": "The Girl With The Wings",
+      "file": "songs/The Girl With The Wings.mp3"
+    },
+    {
       "title": "Turkish March Mozart",
       "file": "songs/Turkish March Mozart.mp3"
     },
     {
+      "title": "Twins",
+      "file": "songs/Twins.mp3"
+    },
+    {
       "title": "Yoko Honna Country Road",
       "file": "songs/Yoko Honna - Country Road.mp3"
+    },
+    {
+      "title": "魔卡少女樱百变小樱片头曲 虚无",
+      "file": "songs/魔卡少女樱百变小樱片头曲 - 虚无.mp3"
     }
   ]
 }
