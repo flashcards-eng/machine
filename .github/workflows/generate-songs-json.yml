@@ -22,7 +22,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Generate songs.json from songs/*.mp3
+      - name: Generate songs.json from playlist folders
         shell: bash
         run: |
           set -euo pipefail
@@ -30,48 +30,61 @@ jobs:
           mkdir -p songs
 
           python3 <<'PY'
-          import os, json, re
+          import json, re
           from pathlib import Path
 
           songs_dir = Path("songs")
-          files = []
+          playlist_names = ["relaxing", "energetic"]
 
-          if songs_dir.exists():
-              for p in songs_dir.rglob("*"):
-                  if p.is_file() and p.suffix.lower() == ".mp3":
-                      rel = p.as_posix()  # "songs/file.mp3" or nested paths
-                      name = p.name
+          def pretty_title(name: str) -> str:
+              title = re.sub(r"\.[^.]+$", "", name)                 # remove extension
+              title = re.sub(r"[_-]+", " ", title)                  # separators -> spaces
+              title = re.sub(r"^\s*\d+\s*[\.\-]?\s*", "", title)    # leading track number
+              title = re.sub(r"\s+", " ", title).strip()
+              if not title:
+                  return name
+              return " ".join(word[:1].upper() + word[1:] for word in title.split(" "))
 
-                      # Pretty title from filename
-                      title = re.sub(r"\.[^.]+$", "", name)      # remove extension
-                      title = re.sub(r"[_-]+", " ", title)       # separators -> spaces
-                      title = re.sub(r"^\s*\d+\s*[\.\-]?\s*", "", title)  # leading track num
-                      title = re.sub(r"\s+", " ", title).strip()
+          def natural_sort_key(s: str):
+              return [int(t) if t.isdigit() else t.lower() for t in re.split(r"(\d+)", s)]
 
-                      # Title case (simple)
-                      title = " ".join(word[:1].upper() + word[1:] for word in title.split(" "))
+          playlists = {}
 
-                      files.append({
-                          "title": title if title else name,
-                          "file": rel
-                      })
+          for pl in playlist_names:
+              folder = songs_dir / pl
+              tracks = []
 
-          # Sort naturally-ish by file path
-          def sort_key(item):
-              s = item["file"].lower()
-              return [int(t) if t.isdigit() else t for t in re.split(r"(\d+)", s)]
+              if folder.exists():
+                  for p in folder.rglob("*"):
+                      if p.is_file() and p.suffix.lower() == ".mp3":
+                          rel = p.as_posix()  # e.g. songs/relaxing/file.mp3
+                          tracks.append({
+                              "title": pretty_title(p.name),
+                              "file": rel
+                          })
 
-          files.sort(key=sort_key)
+              tracks.sort(key=lambda x: natural_sort_key(x["file"]))
+              playlists[pl] = tracks
+
+          # Optional "all" playlist (combined)
+          all_tracks = []
+          for pl in playlist_names:
+              all_tracks.extend(playlists.get(pl, []))
 
           output = {
-              "tracks": files
+              "playlists": playlists,
+              "defaultPlaylist": "relaxing",
+              "all": all_tracks
           }
 
           with open("songs.json", "w", encoding="utf-8") as f:
               json.dump(output, f, ensure_ascii=False, indent=2)
               f.write("\n")
 
-          print(f"Generated songs.json with {len(files)} tracks")
+          print("Generated songs.json:")
+          for pl in playlist_names:
+              print(f"  - {pl}: {len(playlists[pl])} tracks")
+          print(f"  - all: {len(all_tracks)} tracks")
           PY
 
       - name: Commit songs.json if changed
