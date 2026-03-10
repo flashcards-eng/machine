@@ -1,64 +1,267 @@
 {
-  "tracks": [
+  "playlists": {
+    "relaxing": [
+      {
+        "title": "Canon In D",
+        "file": "songs/relaxing/Canon in D.mp3"
+      },
+      {
+        "title": "Cat Returns Mandarin",
+        "file": "songs/relaxing/Cat Returns Mandarin.mp3"
+      },
+      {
+        "title": "Cat Returns",
+        "file": "songs/relaxing/Cat Returns.mp3"
+      },
+      {
+        "title": "Chibi Maruko Chan",
+        "file": "songs/relaxing/Chibi Maruko Chan.mp3"
+      },
+      {
+        "title": "Come And Get Your Love",
+        "file": "songs/relaxing/Come and Get Your Love.mp3"
+      },
+      {
+        "title": "Doraemon",
+        "file": "songs/relaxing/Doraemon.mp3"
+      },
+      {
+        "title": "Joe Hisaishi Summer",
+        "file": "songs/relaxing/Joe Hisaishi - Summer.mp3"
+      },
+      {
+        "title": "My Name Is Helena",
+        "file": "songs/relaxing/My Name Is Helena.mp3"
+      },
+      {
+        "title": "My Neighbor Totoro",
+        "file": "songs/relaxing/My Neighbor Totoro.mp3"
+      },
+      {
+        "title": "Ponyo",
+        "file": "songs/relaxing/Ponyo.mp3"
+      },
+      {
+        "title": "The Girl With The Wings",
+        "file": "songs/relaxing/The Girl With The Wings.mp3"
+      },
+      {
+        "title": "Turkish March Mozart",
+        "file": "songs/relaxing/Turkish March Mozart.mp3"
+      },
+      {
+        "title": "Twins",
+        "file": "songs/relaxing/Twins.mp3"
+      },
+      {
+        "title": "Yoko Honna Country Road",
+        "file": "songs/relaxing/Yoko Honna - Country Road.mp3"
+      },
+      {
+        "title": "魔卡少女樱百变小樱片头曲 虚无",
+        "file": "songs/relaxing/魔卡少女樱百变小樱片头曲 - 虚无.mp3"
+      }
+    ],
+    "energetic": [
+      {
+        "title": "Angela 張韶涵 淋雨一直走 官方完整HD高清版MV [Keep Walking Official HD MV] 張韶涵Angela Zhang (128k)",
+        "file": "songs/energetic/Angela 張韶涵 - 淋雨一直走 官方完整HD高清版MV [Keep Walking Official HD MV] - 張韶涵Angela Zhang (128k).mp3"
+      },
+      {
+        "title": "Coldplay A Sky Full Of Stars (Piano & Cello Cover) The Piano Guys The Piano Guys (128k)",
+        "file": "songs/energetic/Coldplay - A Sky Full of Stars (Piano & Cello Cover) - The Piano Guys - The Piano Guys (128k).mp3"
+      },
+      {
+        "title": "Joey Yung 容祖儿【 The Girl With The Wings 挥着翅膀的女孩 】 Pandarin (128k)",
+        "file": "songs/energetic/Joey Yung 容祖儿【 The Girl With The Wings 挥着翅膀的女孩 】 - Pandarin (128k).mp3"
+      },
+      {
+        "title": "Justin Bieber Baby (Lyrics) Ft. Ludacris Cakes & Eclairs (128k)",
+        "file": "songs/energetic/Justin Bieber - Baby (Lyrics) ft. Ludacris - Cakes & Eclairs (128k).mp3"
+      },
+      {
+        "title": "Katy Perry Roar Katy Perry (128k)",
+        "file": "songs/energetic/Katy Perry - Roar - Katy Perry (128k).mp3"
+      },
+      {
+        "title": "Lady Gaga Bad Romance (Official Music Video) Lady Gaga (128k)",
+        "file": "songs/energetic/Lady Gaga - Bad Romance (Official Music Video) - Lady Gaga (128k).mp3"
+      },
+      {
+        "title": "Lady Gaga Born This Way (Official Music Video) Lady Gaga (128k)",
+        "file": "songs/energetic/Lady Gaga - Born This Way (Official Music Video) - Lady Gaga (128k).mp3"
+      },
+      {
+        "title": "Lady Gaga Poker Face (Official Music Video) Lady Gaga (128k)",
+        "file": "songs/energetic/Lady Gaga - Poker Face (Official Music Video) - Lady Gaga (128k).mp3"
+      },
+      {
+        "title": "Rihanna Diamonds (Lyrics) Shine Bright Like A Diamond, We're Beautiful, Like Diamonds In The Sky 7clouds (128k)",
+        "file": "songs/energetic/Rihanna - Diamonds (Lyrics) Shine bright like a diamond, We're beautiful, like diamonds in the sky - 7clouds (128k).mp3"
+      },
+      {
+        "title": "Shakira Try Everything (Official Video) Shakira (128k)",
+        "file": "songs/energetic/Shakira - Try Everything (Official Video) - Shakira (128k).mp3"
+      },
+      {
+        "title": "Shakira Waka Waka (This Time For Africa) (The Official 2010 FIFA World Cup™ Song) Shakira (128k)",
+        "file": "songs/energetic/Shakira - Waka Waka (This Time for Africa) (The Official 2010 FIFA World Cup™ Song) - Shakira (128k).mp3"
+      },
+      {
+        "title": "The Best Of Vivaldi The Most Famous Classical Music Pieces Of All Time 🎻 Classical Movement (128k)",
+        "file": "songs/energetic/The best of Vivaldi The Most Famous Classical Music Pieces of All Time 🎻 - Classical Movement (128k).mp3"
+      },
+      {
+        "title": "Twins《下一站天后》[Official MV] 英皇娛樂 Eeg Music (128k)",
+        "file": "songs/energetic/Twins《下一站天后》[Official MV] - 英皇娛樂 eeg music (128k).mp3"
+      },
+      {
+        "title": "梁靜茹 小手拉大手 A26755776 (128k)",
+        "file": "songs/energetic/梁靜茹-小手拉大手 - a26755776 (128k).mp3"
+      },
+      {
+        "title": "潘瑋柏 快樂崇拜 Ft. 張韶涵 潘瑋柏官方頻道Will Pan (128k)",
+        "file": "songs/energetic/潘瑋柏 - 快樂崇拜 ft. 張韶涵 - 潘瑋柏官方頻道Will Pan (128k).mp3"
+      },
+      {
+        "title": "蘇打綠 Sodagreen 【你喔】Official Music Video 蘇打綠 Sodagreen (128k)",
+        "file": "songs/energetic/蘇打綠 sodagreen -【你喔】Official Music Video - 蘇打綠 sodagreen (128k).mp3"
+      },
+      {
+        "title": "魔卡少女樱百变小樱片头曲 虚无 (128k)",
+        "file": "songs/energetic/魔卡少女樱百变小樱片头曲 - 虚无 (128k).mp3"
+      }
+    ]
+  },
+  "defaultPlaylist": "relaxing",
+  "all": [
     {
       "title": "Canon In D",
-      "file": "songs/Canon in D.mp3"
+      "file": "songs/relaxing/Canon in D.mp3"
     },
     {
       "title": "Cat Returns Mandarin",
-      "file": "songs/Cat Returns Mandarin.mp3"
+      "file": "songs/relaxing/Cat Returns Mandarin.mp3"
     },
     {
       "title": "Cat Returns",
-      "file": "songs/Cat Returns.mp3"
+      "file": "songs/relaxing/Cat Returns.mp3"
     },
     {
       "title": "Chibi Maruko Chan",
-      "file": "songs/Chibi Maruko Chan.mp3"
+      "file": "songs/relaxing/Chibi Maruko Chan.mp3"
     },
     {
       "title": "Come And Get Your Love",
-      "file": "songs/Come and Get Your Love.mp3"
+      "file": "songs/relaxing/Come and Get Your Love.mp3"
     },
     {
       "title": "Doraemon",
-      "file": "songs/Doraemon.mp3"
+      "file": "songs/relaxing/Doraemon.mp3"
     },
     {
       "title": "Joe Hisaishi Summer",
-      "file": "songs/Joe Hisaishi - Summer.mp3"
+      "file": "songs/relaxing/Joe Hisaishi - Summer.mp3"
     },
     {
       "title": "My Name Is Helena",
-      "file": "songs/My Name Is Helena.mp3"
+      "file": "songs/relaxing/My Name Is Helena.mp3"
     },
     {
       "title": "My Neighbor Totoro",
-      "file": "songs/My Neighbor Totoro.mp3"
+      "file": "songs/relaxing/My Neighbor Totoro.mp3"
     },
     {
       "title": "Ponyo",
-      "file": "songs/Ponyo.mp3"
+      "file": "songs/relaxing/Ponyo.mp3"
     },
     {
       "title": "The Girl With The Wings",
-      "file": "songs/The Girl With The Wings.mp3"
+      "file": "songs/relaxing/The Girl With The Wings.mp3"
     },
     {
       "title": "Turkish March Mozart",
-      "file": "songs/Turkish March Mozart.mp3"
+      "file": "songs/relaxing/Turkish March Mozart.mp3"
     },
     {
       "title": "Twins",
-      "file": "songs/Twins.mp3"
+      "file": "songs/relaxing/Twins.mp3"
     },
     {
       "title": "Yoko Honna Country Road",
-      "file": "songs/Yoko Honna - Country Road.mp3"
+      "file": "songs/relaxing/Yoko Honna - Country Road.mp3"
     },
     {
       "title": "魔卡少女樱百变小樱片头曲 虚无",
-      "file": "songs/魔卡少女樱百变小樱片头曲 - 虚无.mp3"
+      "file": "songs/relaxing/魔卡少女樱百变小樱片头曲 - 虚无.mp3"
+    },
+    {
+      "title": "Angela 張韶涵 淋雨一直走 官方完整HD高清版MV [Keep Walking Official HD MV] 張韶涵Angela Zhang (128k)",
+      "file": "songs/energetic/Angela 張韶涵 - 淋雨一直走 官方完整HD高清版MV [Keep Walking Official HD MV] - 張韶涵Angela Zhang (128k).mp3"
+    },
+    {
+      "title": "Coldplay A Sky Full Of Stars (Piano & Cello Cover) The Piano Guys The Piano Guys (128k)",
+      "file": "songs/energetic/Coldplay - A Sky Full of Stars (Piano & Cello Cover) - The Piano Guys - The Piano Guys (128k).mp3"
+    },
+    {
+      "title": "Joey Yung 容祖儿【 The Girl With The Wings 挥着翅膀的女孩 】 Pandarin (128k)",
+      "file": "songs/energetic/Joey Yung 容祖儿【 The Girl With The Wings 挥着翅膀的女孩 】 - Pandarin (128k).mp3"
+    },
+    {
+      "title": "Justin Bieber Baby (Lyrics) Ft. Ludacris Cakes & Eclairs (128k)",
+      "file": "songs/energetic/Justin Bieber - Baby (Lyrics) ft. Ludacris - Cakes & Eclairs (128k).mp3"
+    },
+    {
+      "title": "Katy Perry Roar Katy Perry (128k)",
+      "file": "songs/energetic/Katy Perry - Roar - Katy Perry (128k).mp3"
+    },
+    {
+      "title": "Lady Gaga Bad Romance (Official Music Video) Lady Gaga (128k)",
+      "file": "songs/energetic/Lady Gaga - Bad Romance (Official Music Video) - Lady Gaga (128k).mp3"
+    },
+    {
+      "title": "Lady Gaga Born This Way (Official Music Video) Lady Gaga (128k)",
+      "file": "songs/energetic/Lady Gaga - Born This Way (Official Music Video) - Lady Gaga (128k).mp3"
+    },
+    {
+      "title": "Lady Gaga Poker Face (Official Music Video) Lady Gaga (128k)",
+      "file": "songs/energetic/Lady Gaga - Poker Face (Official Music Video) - Lady Gaga (128k).mp3"
+    },
+    {
+      "title": "Rihanna Diamonds (Lyrics) Shine Bright Like A Diamond, We're Beautiful, Like Diamonds In The Sky 7clouds (128k)",
+      "file": "songs/energetic/Rihanna - Diamonds (Lyrics) Shine bright like a diamond, We're beautiful, like diamonds in the sky - 7clouds (128k).mp3"
+    },
+    {
+      "title": "Shakira Try Everything (Official Video) Shakira (128k)",
+      "file": "songs/energetic/Shakira - Try Everything (Official Video) - Shakira (128k).mp3"
+    },
+    {
+      "title": "Shakira Waka Waka (This Time For Africa) (The Official 2010 FIFA World Cup™ Song) Shakira (128k)",
+      "file": "songs/energetic/Shakira - Waka Waka (This Time for Africa) (The Official 2010 FIFA World Cup™ Song) - Shakira (128k).mp3"
+    },
+    {
+      "title": "The Best Of Vivaldi The Most Famous Classical Music Pieces Of All Time 🎻 Classical Movement (128k)",
+      "file": "songs/energetic/The best of Vivaldi The Most Famous Classical Music Pieces of All Time 🎻 - Classical Movement (128k).mp3"
+    },
+    {
+      "title": "Twins《下一站天后》[Official MV] 英皇娛樂 Eeg Music (128k)",
+      "file": "songs/energetic/Twins《下一站天后》[Official MV] - 英皇娛樂 eeg music (128k).mp3"
+    },
+    {
+      "title": "梁靜茹 小手拉大手 A26755776 (128k)",
+      "file": "songs/energetic/梁靜茹-小手拉大手 - a26755776 (128k).mp3"
+    },
+    {
+      "title": "潘瑋柏 快樂崇拜 Ft. 張韶涵 潘瑋柏官方頻道Will Pan (128k)",
+      "file": "songs/energetic/潘瑋柏 - 快樂崇拜 ft. 張韶涵 - 潘瑋柏官方頻道Will Pan (128k).mp3"
+    },
+    {
+      "title": "蘇打綠 Sodagreen 【你喔】Official Music Video 蘇打綠 Sodagreen (128k)",
+      "file": "songs/energetic/蘇打綠 sodagreen -【你喔】Official Music Video - 蘇打綠 sodagreen (128k).mp3"
+    },
+    {
+      "title": "魔卡少女樱百变小樱片头曲 虚无 (128k)",
+      "file": "songs/energetic/魔卡少女樱百变小樱片头曲 - 虚无 (128k).mp3"
     }
   ]
 }
