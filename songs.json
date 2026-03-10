@@ -2,6 +2,14 @@
   "playlists": {
     "relaxing": [
       {
+        "title": "Always With Me Flute Spirited Away Iccy Wy (128k)",
+        "file": "songs/relaxing/always with me flute - spirited away - Iccy Wy (128k).mp3"
+      },
+      {
+        "title": "Canon In C 卡農 Ukulele 烏克麗麗 ウクレレ 教學 TABS Tutorial @tseriesoldisgold 5AN烏克 (128k)",
+        "file": "songs/relaxing/Canon in C 卡農 Ukulele 烏克麗麗 ウクレレ 教學 TABS Tutorial @tseriesoldisgold - 5AN烏克 (128k).mp3"
+      },
+      {
         "title": "Canon In D",
         "file": "songs/relaxing/Canon in D.mp3"
       },
@@ -42,6 +50,10 @@
         "file": "songs/relaxing/Ponyo.mp3"
       },
       {
+        "title": "The Blue Danube Waltz (An Der Schönen Blauen Donau) Piano OKTAV Piano (128k)",
+        "file": "songs/relaxing/The Blue Danube Waltz (An der schönen blauen Donau) - Piano - OKTAV Piano (128k).mp3"
+      },
+      {
         "title": "The Girl With The Wings",
         "file": "songs/relaxing/The Girl With The Wings.mp3"
       },
@@ -56,6 +68,14 @@
       {
         "title": "Yoko Honna Country Road",
         "file": "songs/relaxing/Yoko Honna - Country Road.mp3"
+      },
+      {
+        "title": "神隱少女主題曲《永遠同在》中日歌詞 千と千尋の神隠し《いつも何度でも》歌詞付き まるいマル (128k)",
+        "file": "songs/relaxing/神隱少女主題曲《永遠同在》中日歌詞 千と千尋の神隠し《いつも何度でも》歌詞付き - まるいマル (128k).mp3"
+      },
+      {
+        "title": "貝多芬 第14鋼琴奏鳴曲《月光奏鳴曲》Beethoven Moonlight Sonata Piano Solo Classical Tunes (128k)",
+        "file": "songs/relaxing/貝多芬 -第14鋼琴奏鳴曲《月光奏鳴曲》Beethoven Moonlight Sonata - Piano Solo - Classical Tunes (128k).mp3"
       },
       {
         "title": "魔卡少女樱百变小樱片头曲 虚无",
@@ -136,6 +156,14 @@
   "defaultPlaylist": "relaxing",
   "all": [
     {
+      "title": "Always With Me Flute Spirited Away Iccy Wy (128k)",
+      "file": "songs/relaxing/always with me flute - spirited away - Iccy Wy (128k).mp3"
+    },
+    {
+      "title": "Canon In C 卡農 Ukulele 烏克麗麗 ウクレレ 教學 TABS Tutorial @tseriesoldisgold 5AN烏克 (128k)",
+      "file": "songs/relaxing/Canon in C 卡農 Ukulele 烏克麗麗 ウクレレ 教學 TABS Tutorial @tseriesoldisgold - 5AN烏克 (128k).mp3"
+    },
+    {
       "title": "Canon In D",
       "file": "songs/relaxing/Canon in D.mp3"
     },
@@ -176,6 +204,10 @@
       "file": "songs/relaxing/Ponyo.mp3"
     },
     {
+      "title": "The Blue Danube Waltz (An Der Schönen Blauen Donau) Piano OKTAV Piano (128k)",
+      "file": "songs/relaxing/The Blue Danube Waltz (An der schönen blauen Donau) - Piano - OKTAV Piano (128k).mp3"
+    },
+    {
       "title": "The Girl With The Wings",
       "file": "songs/relaxing/The Girl With The Wings.mp3"
     },
@@ -190,6 +222,14 @@
     {
       "title": "Yoko Honna Country Road",
       "file": "songs/relaxing/Yoko Honna - Country Road.mp3"
+    },
+    {
+      "title": "神隱少女主題曲《永遠同在》中日歌詞 千と千尋の神隠し《いつも何度でも》歌詞付き まるいマル (128k)",
+      "file": "songs/relaxing/神隱少女主題曲《永遠同在》中日歌詞 千と千尋の神隠し《いつも何度でも》歌詞付き - まるいマル (128k).mp3"
+    },
+    {
+      "title": "貝多芬 第14鋼琴奏鳴曲《月光奏鳴曲》Beethoven Moonlight Sonata Piano Solo Classical Tunes (128k)",
+      "file": "songs/relaxing/貝多芬 -第14鋼琴奏鳴曲《月光奏鳴曲》Beethoven Moonlight Sonata - Piano Solo - Classical Tunes (128k).mp3"
     },
     {
       "title": "魔卡少女樱百变小樱片头曲 虚无",
